@@ -16,7 +16,11 @@
     height: 80%;
     background-color: black;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
 }
 #instructions{
     text-align: center;
