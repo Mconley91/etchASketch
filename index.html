@@ -9,9 +9,19 @@
 </head>
 <body>
     <div id="game">
-        <div id="tools"></div>
+        <div id="tools">
+            <button id="yellow" class="colorButton" style="background-color:yellow">Yellow</button>
+            <button id="green" class="colorButton" style="background-color:green; color: white;">Green</button>
+            <button id="red" class="colorButton"  style="background-color:red">Red</button>
+            <button id="blue" class="colorButton" style="background-color:blue; color: white">Blue</button>
+            <button id="black" class="colorButton"  style="background-color:black; color: white">Black</button>
+            <button id="white" class="colorButton" style="background-color:white">White</button>
+        </div>
         <div id="screen"></div>
-        <p id="instructions"></p>
+        <div id="instructions">
+            <p id="instructionsText">Drag your pointer over the screen to draw!</p>
+            <button id='reset' onclick=reset()>Reset</button>
+        </div>
     </div>
 </body>
 </html>

@@ -1,27 +1,43 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 #game{
     width: 90vw;
     height: 90vh;
     background-color: rgb(192, 42, 42);
     margin: auto;
+    overflow: hidden;
 }
 #tools, #screen, #instructions{
     width: 90%;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #instructions, #tools{
     height: 10%;
     background-color: rgb(199, 193, 186);
 }
+#tools{
+    gap: 5px;
+}
 #screen{
     height: 80%;
     background-color: black;
-    display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
     overflow: hidden;
+    border: solid rgb(78, 76, 76) 1px;
 }
 #instructions{
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.colorButton, #reset{
+ width: 70px;
+ height:30px;
+ margin: 5px;
 }
