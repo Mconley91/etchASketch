@@ -1,7 +1,11 @@
 const screen = document.querySelector('#screen');
-const buttons = document.querySelectorAll('.colorButton')
 let color = 'black';
 let areWePainting = false;
+screen.addEventListener('click', ()=>{
+    areWePainting ? areWePainting = false : areWePainting = true;
+    getMystery();
+});
+
 
 for(let i = 0; i < 20000; i++){
     const square = document.createElement('div');
@@ -14,7 +18,8 @@ for(let i = 0; i < 20000; i++){
     screen.appendChild(square);
 };
 
-const squares = document.querySelectorAll('.square')
+const squares = document.querySelectorAll('.square');
+const buttons = document.querySelectorAll('.colorButton');
 
 buttons.forEach((button)=>{
     button.addEventListener('click',(event)=>{
@@ -37,17 +42,36 @@ buttons.forEach((button)=>{
             case 'white':
                 color = 'white';
                 break;
+            case 'purple':
+                color = 'purple';
+                break;
+            case 'brown':
+                color = 'brown';
+                break;
+            case 'orange':
+                color = 'orange';
+                break;
+            case 'grey':
+                color = 'grey';
+                break;
+            case 'mystery':
+                color = `#${+ getMystery()}`;
+                break;
         }
     })
 });
 
 function reset(){
+    getMystery();
     squares.forEach((square)=>{square.style.backgroundColor = 'white'})
-}
+};
 
 function painting(square){
     if(areWePainting){
         square.style.backgroundColor = color;
     }
+};
+
+function getMystery(){
+    return mystery = Math.floor(Math.random() * 999999) + 1;
 }
-screen.addEventListener('click', ()=>{areWePainting ? areWePainting = false : areWePainting = true})
