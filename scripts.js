@@ -3,7 +3,6 @@ let color = 'black';
 let areWePainting = false;
 screen.addEventListener('click', ()=>{
     areWePainting ? areWePainting = false : areWePainting = true;
-    getMystery();
 });
 
 
@@ -55,14 +54,16 @@ buttons.forEach((button)=>{
                 color = 'grey';
                 break;
             case 'mystery':
-                color = `#${+ getMystery()}`;
+                getMystery();
                 break;
+                // case 'rainbow':
+                // rainbow();
+                // break;
         }
     })
 });
 
 function reset(){
-    getMystery();
     squares.forEach((square)=>{square.style.backgroundColor = 'white'})
 };
 
@@ -73,5 +74,10 @@ function painting(square){
 };
 
 function getMystery(){
-    return mystery = Math.floor(Math.random() * 999999) + 1;
+    mystery = Math.floor(Math.random() * 999999) + 1;
+    color = '#' + mystery;
 }
+
+// function rainbow(){
+//     squares.forEach((square)=>{square.addEventListener('mouseover', ()=>{getMystery()})})
+// }
