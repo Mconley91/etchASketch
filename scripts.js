@@ -4,6 +4,8 @@ let areWePainting = false;
 screen.addEventListener('click', ()=>{
     areWePainting ? areWePainting = false : areWePainting = true;
 });
+let areWeRainbowing= false;
+const testMystery = getMystery; //no idea why this works. If getMystery is called it breaks.
 
 
 for(let i = 0; i < 20000; i++){
@@ -22,6 +24,7 @@ const buttons = document.querySelectorAll('.colorButton');
 
 buttons.forEach((button)=>{
     button.addEventListener('click',(event)=>{
+        areWeRainbowing ? removeRainbow() : null;
         switch(event.target.id){
             case 'yellow':
                 color = 'yellow';
@@ -56,9 +59,9 @@ buttons.forEach((button)=>{
             case 'mystery':
                 getMystery();
                 break;
-                // case 'rainbow':
-                // rainbow();
-                // break;
+            case 'rainbow':
+                rainbow();
+                break;
         }
     })
 });
@@ -79,9 +82,13 @@ function getMystery(){
         returnArray.push(Math.floor(Math.random() * 10));
     }
     color = '#' + returnArray.join("");
-    console.log(returnArray.join(""));
-}
+};
 
-// function rainbow(){
-//     squares.forEach((square)=>{square.addEventListener('mouseover', ()=>{getMystery()})})
-// }
+function rainbow(){
+    squares.forEach((square)=>{square.addEventListener('mouseover', testMystery)});
+    areWeRainbowing = true;
+};
+function removeRainbow(){
+    squares.forEach((square)=>{square.removeEventListener('mouseover', testMystery)});
+    areWeRainbowing = false;
+}
