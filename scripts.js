@@ -12,8 +12,8 @@ for(let i = 0; i < 20000; i++){
     square.setAttribute('class', `square`);
     square.addEventListener('mouseover', ()=>{painting(square)})
     square.style.backgroundColor = 'white';
-    square.style.width = '.5%';
-    square.style.height = '1%';
+    square.style.width = '.5%'; //make these adjustable via user input
+    square.style.height = '1%'; //make these adjustable via user input
     screen.appendChild(square);
 };
 
@@ -74,8 +74,12 @@ function painting(square){
 };
 
 function getMystery(){
-    mystery = Math.floor(Math.random() * 999999) + 1;
-    color = '#' + mystery;
+    let returnArray = [];
+    for (let i = 0; i < 6; i++) {
+        returnArray.push(Math.floor(Math.random() * 10));
+    }
+    color = '#' + returnArray.join("");
+    console.log(returnArray.join(""));
 }
 
 // function rainbow(){
