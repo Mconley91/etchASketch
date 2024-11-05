@@ -1,21 +1,30 @@
 const screen = document.querySelector('#screen');
 let color = 'black';
 let areWePainting = false;
+let areWeRainbowing= false;
+let squareCount = 13000; //13000 was original value
+let squareWidth = '.5%'; //'.5%'
+let squareHeight = '1%'; //'1%'
+
 screen.addEventListener('click', ()=>{
     areWePainting ? areWePainting = false : areWePainting = true;
 });
-let areWeRainbowing= false;
-const testMystery = getMystery; //no idea why this works. If getMystery is called it breaks.
+const rainbowing = getMystery; //no idea why this works. If getMystery is called it breaks.
 
 
-for(let i = 0; i < 20000; i++){
+for(let i = 0; i < squareCount; i++){
     const square = document.createElement('div');
     square.setAttribute('id', `square${i}`);
     square.setAttribute('class', `square`);
-    square.addEventListener('mouseover', ()=>{painting(square)})
+    square.addEventListener('mouseover', ()=>{painting(square)});
     square.style.backgroundColor = 'white';
-    square.style.width = '.5%'; //make these adjustable via user input
-    square.style.height = '1%'; //make these adjustable via user input
+    square.style.width = squareWidth; 
+    square.style.height = squareHeight; 
+    square.style.flex = '1 1 auto';
+    // square.innerText = i; //dev tool
+    square.style.border = 'solid 1px lightgrey'; //dev tool
+    // square.style.borderRadius = '50%'; //for fun
+    square.style.textAlign = 'center;'
     screen.appendChild(square);
 };
 
@@ -85,10 +94,10 @@ function getMystery(){
 };
 
 function rainbow(){
-    squares.forEach((square)=>{square.addEventListener('mouseover', testMystery)});
+    squares.forEach((square)=>{square.addEventListener('mouseover', rainbowing)});
     areWeRainbowing = true;
 };
 function removeRainbow(){
-    squares.forEach((square)=>{square.removeEventListener('mouseover', testMystery)});
+    squares.forEach((square)=>{square.removeEventListener('mouseover', rainbowing)});
     areWeRainbowing = false;
-}
+};
