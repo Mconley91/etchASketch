@@ -3,7 +3,7 @@ const screen = document.querySelector('#screen');
 let color = 'black';
 let areWePainting = false;
 let areWeRainbowing= false;
-let userInput = 30;
+let userInput = 64;
 let standardSize;
 let squareCount;
 let squareWidth;
@@ -15,7 +15,7 @@ makeCanvas();
 screen.addEventListener('click', ()=>{
     areWePainting ? areWePainting = false : areWePainting = true;
 });
-const rainbowing = getMystery; //no idea why this works. If getMystery is called it breaks.
+const rainbowing = getMystery; //If getMystery is called instead of referenced it breaks.
 
 function makeCanvas(){
     standardSize = 100/userInput;
