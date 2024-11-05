@@ -3,13 +3,11 @@ const screen = document.querySelector('#screen');
 let color = 'black';
 let areWePainting = false;
 let areWeRainbowing= false;
-let userInput = 40;
-let standardSize = 30;
+let userInput = 10;
+let standardSize = 100/userInput;
 let squareCount = userInput * userInput;
-let squareWidth = `${standardSize}px`;
-let squareHeight = `${standardSize}px`;
-screen.style.width = `${standardSize * (userInput + 1)}px`; 
-//working here, screen size must remain constant. prolly shrinking squares as needed
+let squareWidth = `${standardSize - .5}%`;
+let squareHeight = `${standardSize}%`;
 makeCanvas();
 
 screen.addEventListener('click', ()=>{
@@ -32,7 +30,7 @@ function makeCanvas(){
         square.style.alignItems = 'center';
         square.style.flex = '0 0 auto';
         square.style.border = 'solid 1px lightgrey'; //dev tool
-        paragraph.innerText = i;//dev tool
+        // paragraph.innerText = i;//dev tool
         square.appendChild(paragraph);
         screen.appendChild(square);
     };

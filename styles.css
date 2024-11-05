@@ -6,6 +6,9 @@
     width: 90vw;
     background-color: rgb(54, 52, 52);
     margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 #tools, #screen, #instructions{
     margin: auto;
@@ -20,10 +23,13 @@
 }
 #tools{
     gap: 5px;
+    flex-direction: column;
 }
 #screen{
     justify-content: center;
     flex-wrap: wrap;
+    width: 40vw;
+    height: 40vw;
 }
 #instructions{
     text-align: center;
