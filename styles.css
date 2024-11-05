@@ -6,7 +6,6 @@
     width: 90vw;
     background-color: rgb(54, 52, 52);
     margin: auto;
-    overflow: hidden;
 }
 #tools, #screen, #instructions{
     margin: auto;
@@ -25,7 +24,6 @@
 #screen{
     justify-content: center;
     flex-wrap: wrap;
-    overflow: auto;
 }
 #instructions{
     text-align: center;
