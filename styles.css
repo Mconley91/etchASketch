@@ -4,18 +4,17 @@
 }
 #game{
     width: 90vw;
-    height: 90vh;
     background-color: rgb(54, 52, 52);
     margin: auto;
     overflow: hidden;
 }
 #tools, #screen, #instructions{
-    width: 90%;
     margin: auto;
     display: flex;
 }
 #instructions, #tools{
-    height: 10%;
+    width: 90vw;
+    height: 5vw;
     background-color: rgb(199, 193, 186);
     justify-content: center;
     align-items: center;
@@ -24,12 +23,9 @@
     gap: 5px;
 }
 #screen{
-    height: 80%;
-    width: 90%;
-    background-color: black;
+    justify-content: center;
     flex-wrap: wrap;
-    overflow: clip;
-    border: solid rgb(78, 76, 76) 1px;
+    overflow: auto;
 }
 #instructions{
     text-align: center;

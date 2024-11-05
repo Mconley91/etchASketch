@@ -1,32 +1,42 @@
 const screen = document.querySelector('#screen');
+
 let color = 'black';
 let areWePainting = false;
 let areWeRainbowing= false;
-let squareCount = 13000; //13000 was original value
-let squareWidth = '.5%'; //'.5%'
-let squareHeight = '1%'; //'1%'
+let userInput = 10;
+let standardSize = 10;
+let squareCount = userInput * userInput;
+let squareWidth = `${standardSize}px`;
+let squareHeight = `${standardSize}px`;
+screen.style.width = `${standardSize * (userInput + 1)}px`; //not entirely sure why it works but it does
+
 
 screen.addEventListener('click', ()=>{
     areWePainting ? areWePainting = false : areWePainting = true;
 });
 const rainbowing = getMystery; //no idea why this works. If getMystery is called it breaks.
 
+function makeCanvas(){
+    for(let i = 1; i <= squareCount; i++){
+        const square = document.createElement('div');
+        const paragraph = document.createElement('p');
+        square.setAttribute('id', `square${i}`);
+        square.setAttribute('class', `square`);
+        square.addEventListener('mouseover', ()=>{painting(square)});
+        square.style.backgroundColor = 'white';
+        square.style.width = squareWidth; 
+        square.style.height = squareHeight; 
+        square.style.display = 'flex';
+        square.style.justifyContent = 'center';
+        square.style.alignItems = 'center';
+        square.style.flex = '0 0 auto';
+        square.style.border = 'solid 1px lightgrey'; //dev tool
+        // paragraph.innerText = i;//dev tool
+        square.appendChild(paragraph);
+        screen.appendChild(square);
+    };
+}
 
-for(let i = 0; i < squareCount; i++){
-    const square = document.createElement('div');
-    square.setAttribute('id', `square${i}`);
-    square.setAttribute('class', `square`);
-    square.addEventListener('mouseover', ()=>{painting(square)});
-    square.style.backgroundColor = 'white';
-    square.style.width = squareWidth; 
-    square.style.height = squareHeight; 
-    square.style.flex = '1 1 auto';
-    // square.innerText = i; //dev tool
-    square.style.border = 'solid 1px lightgrey'; //dev tool
-    // square.style.borderRadius = '50%'; //for fun
-    square.style.textAlign = 'center;'
-    screen.appendChild(square);
-};
 
 const squares = document.querySelectorAll('.square');
 const buttons = document.querySelectorAll('.colorButton');
