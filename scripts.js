@@ -3,11 +3,13 @@ const screen = document.querySelector('#screen');
 let color = 'black';
 let areWePainting = false;
 let areWeRainbowing= false;
-let userInput = 10;
+let userInput = 30;
 let standardSize = 100/userInput;
 let squareCount = userInput * userInput;
-let squareWidth = `${standardSize - .5}%`;
+let squareWidth = `${standardSize}%`;
 let squareHeight = `${standardSize}%`;
+let squares;
+const buttons = document.querySelectorAll('.colorButton');
 makeCanvas();
 
 screen.addEventListener('click', ()=>{
@@ -18,7 +20,6 @@ const rainbowing = getMystery; //no idea why this works. If getMystery is called
 function makeCanvas(){
     for(let i = 1; i <= squareCount; i++){
         const square = document.createElement('div');
-        const paragraph = document.createElement('p');
         square.setAttribute('id', `square${i}`);
         square.setAttribute('class', `square`);
         square.addEventListener('mouseover', ()=>{painting(square)});
@@ -28,16 +29,10 @@ function makeCanvas(){
         square.style.display = 'flex';
         square.style.justifyContent = 'center';
         square.style.alignItems = 'center';
-        square.style.flex = '0 0 auto';
-        square.style.border = 'solid 1px lightgrey'; //dev tool
-        // paragraph.innerText = i;//dev tool
-        square.appendChild(paragraph);
         screen.appendChild(square);
+        squares = document.querySelectorAll('.square');
     };
-}
-
-const squares = document.querySelectorAll('.square');
-const buttons = document.querySelectorAll('.colorButton');
+}; 
 
 buttons.forEach((button)=>{
     button.addEventListener('click',(event)=>{
@@ -82,17 +77,14 @@ buttons.forEach((button)=>{
         }
     })
 });
-
 function reset(){
     squares.forEach((square)=>{square.style.backgroundColor = 'white'})
 };
-
 function painting(square){
     if(areWePainting){
         square.style.backgroundColor = color;
     }
 };
-
 function getMystery(){
     let returnArray = [];
     for (let i = 0; i < 6; i++) {
@@ -100,7 +92,6 @@ function getMystery(){
     }
     color = '#' + returnArray.join("");
 };
-
 function rainbow(){
     squares.forEach((square)=>{square.addEventListener('mouseover', rainbowing)});
     areWeRainbowing = true;
@@ -109,3 +100,12 @@ function removeRainbow(){
     squares.forEach((square)=>{square.removeEventListener('mouseover', rainbowing)});
     areWeRainbowing = false;
 };
+function adjust(){
+    let input = prompt('Enter a number between 1 & 100');
+    if(input > 100 || input < 0){
+        alert('invalid entry');
+    }
+    else{
+        userInput = input;
+    }
+}
