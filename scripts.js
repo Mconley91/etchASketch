@@ -4,10 +4,10 @@ let color = 'black';
 let areWePainting = false;
 let areWeRainbowing= false;
 let userInput = 30;
-let standardSize = 100/userInput;
-let squareCount = userInput * userInput;
-let squareWidth = `${standardSize}%`;
-let squareHeight = `${standardSize}%`;
+let standardSize;
+let squareCount;
+let squareWidth;
+let squareHeight;
 let squares;
 const buttons = document.querySelectorAll('.colorButton');
 makeCanvas();
@@ -18,6 +18,10 @@ screen.addEventListener('click', ()=>{
 const rainbowing = getMystery; //no idea why this works. If getMystery is called it breaks.
 
 function makeCanvas(){
+    standardSize = 100/userInput;
+    squareCount = userInput * userInput;
+    squareWidth = `${standardSize}%`;
+    squareHeight = `${standardSize}%`;
     for(let i = 1; i <= squareCount; i++){
         const square = document.createElement('div');
         square.setAttribute('id', `square${i}`);
@@ -102,10 +106,15 @@ function removeRainbow(){
 };
 function adjust(){
     let input = prompt('Enter a number between 1 & 100');
-    if(input > 100 || input < 0){
+    if(input > 100 || input <= 0){
         alert('invalid entry');
     }
     else{
+        deleteCanvas();
         userInput = input;
+        makeCanvas();
     }
+}
+function deleteCanvas(){
+    squares.forEach((square)=>{square.remove()})
 }
