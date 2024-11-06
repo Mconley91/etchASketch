@@ -3,6 +3,8 @@ const screen = document.querySelector('#screen');
 let color = 'black';
 let areWePainting = false;
 let areWeRainbowing= false;
+let areWeDarkening = false;
+let areWeLightening = false;
 let userInput = 64;
 let standardSize;
 let squareCount;
@@ -28,6 +30,7 @@ function makeCanvas(){
         square.setAttribute('class', `square`);
         square.addEventListener('mouseover', ()=>{painting(square)});
         square.style.backgroundColor = 'white';
+        square.style.opacity = 1;
         square.style.width = squareWidth; 
         square.style.height = squareHeight; 
         square.style.display = 'flex';
@@ -41,6 +44,8 @@ function makeCanvas(){
 buttons.forEach((button)=>{
     button.addEventListener('click',(event)=>{
         areWeRainbowing ? removeRainbow() : null;
+        areWeDarkening = false;
+        areWeLightening = false;
         switch(event.target.id){
             case 'yellow':
                 color = 'yellow';
@@ -78,18 +83,31 @@ buttons.forEach((button)=>{
             case 'rainbow':
                 rainbow();
                 break;
-            case 'rainbow':
-                rainbow();
+            case 'darken':
+                areWeDarkening = true;
+                break;
+            case 'lighten':
+                areWeLightening = true;
                 break;
         }
     })
 });
 function reset(){
-    squares.forEach((square)=>{square.style.backgroundColor = 'white'})
+    squares.forEach((square)=>{
+        square.style.backgroundColor = 'white';
+        square.style.opacity = 1;
+    })
 };
 function painting(square){
-    if(areWePainting){
-        square.style.backgroundColor = color;
+    if(!areWeDarkening && !areWeLightening){
+        if(areWePainting){
+            square.style.backgroundColor = color;
+        }
+    }
+    else {
+        if(areWePainting){
+            darkenOrLighten(square);
+        }
     }
 };
 function getMystery(){
@@ -117,7 +135,22 @@ function adjust(){
         userInput = input;
         makeCanvas();
     }
-}
+};
 function deleteCanvas(){
     squares.forEach((square)=>{square.remove()})
-}
+};
+
+function darkenOrLighten(square){
+    let opacityAsPercentage = square.style.opacity * 100;
+    let controller = 10;
+    if(areWeLightening){
+        if(opacityAsPercentage < 100){
+            square.style.opacity  = `${opacityAsPercentage + controller}%`;
+        }
+    }
+    else{
+        if(opacityAsPercentage > 0){
+            square.style.opacity  = `${opacityAsPercentage - controller}%`;
+        }
+    }
+};
