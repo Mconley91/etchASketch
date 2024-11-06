@@ -78,6 +78,9 @@ buttons.forEach((button)=>{
             case 'rainbow':
                 rainbow();
                 break;
+            case 'rainbow':
+                rainbow();
+                break;
         }
     })
 });
