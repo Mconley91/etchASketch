@@ -1,4 +1,5 @@
 const screen = document.querySelector('#screen');
+const game = document.querySelector('#game');
 
 let color = 'black';
 let areWePainting = false;
@@ -14,9 +15,13 @@ let squares;
 const buttons = document.querySelectorAll('.colorButton');
 makeCanvas();
 
-screen.addEventListener('click', ()=>{
-    areWePainting ? areWePainting = false : areWePainting = true;
+game.addEventListener('mousedown', ()=>{
+    areWePainting  = true;
 });
+game.addEventListener('mouseup', ()=>{
+    areWePainting = false;
+});
+
 const rainbowing = getMystery; //If getMystery is called instead of referenced it breaks.
 
 function makeCanvas(){
@@ -28,6 +33,7 @@ function makeCanvas(){
         const square = document.createElement('div');
         square.setAttribute('id', `square${i}`);
         square.setAttribute('class', `square`);
+        square.setAttribute('draggable', `false`);
         square.addEventListener('mouseover', ()=>{painting(square)});
         square.style.backgroundColor = 'white';
         square.style.opacity = 1;

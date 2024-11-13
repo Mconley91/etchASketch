@@ -30,6 +30,7 @@
     flex-wrap: wrap;
     width: 40vw;
     height: 40vw;
+    -webkit-user-drag: none;
 }
 #instructions{
     text-align: center;
