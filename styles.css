@@ -43,3 +43,6 @@
  height:30px;
  margin: 5px;
 }
+.colorButton:hover{
+    border: 1px solid white;
+}
