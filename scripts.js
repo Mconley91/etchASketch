@@ -1,5 +1,5 @@
-const screen = document.querySelector('#screen');
 const game = document.querySelector('#game');
+const screen = document.querySelector('#screen');
 
 let color = 'black';
 let areWePainting = false;
@@ -33,7 +33,6 @@ function makeCanvas(){
         const square = document.createElement('div');
         square.setAttribute('id', `square${i}`);
         square.setAttribute('class', `square`);
-        square.setAttribute('draggable', `false`);
         square.addEventListener('mouseover', ()=>{painting(square)});
         square.style.backgroundColor = 'white';
         square.style.opacity = 1;

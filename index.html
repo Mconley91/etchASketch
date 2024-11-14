@@ -7,7 +7,7 @@
     <link href="styles.css" rel="stylesheet">
     <script src="scripts.js" defer></script>
 </head>
-<body>
+<body onmousedown="event.preventDefault()">
     <div id="game">
         <div id="tools">
             <button id="resizeButton" onclick=adjust()>Adjust Canvas Size</button>
@@ -28,7 +28,7 @@
                 <button id="lighten" class="colorButton" style="background-color: white; color: black";>Lighten</button>
             </div>
         </div>
-        <div id="screen" draggable="false"></div>
+        <div id="screen"></div>
         <div id="instructions">
             <p id="instructionsText">Click, then drag your pointer over the screen to draw!</p>
             <button id='reset' onclick=reset()>Reset</button>
